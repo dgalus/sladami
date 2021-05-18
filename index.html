@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+
+        <title>Śladami Polskich Dominikanów</title>
+
+        <!-- Stylesheets -->
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+        <link href="css/jquery.fancybox.css" rel="stylesheet">
+        <link href="css/aos.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script>
+			  let map;
+
+			  function initMap() {
+				map = new google.maps.Map(document.getElementById("gm"), {
+				  zoom: 7,
+				  center: { lat: 52.1, lng: 19.33 },
+				  mapTypeControl: false,
+				  mapTypeId: "terrain"
+				});
+				const iconBase =
+				  "img/marker/";
+				const icons = {
+				  red: {
+					icon: iconBase + "red.png",
+				  },
+				  orange: {
+					icon: iconBase + "orange.png",
+				  },
+				  blue: {
+					icon: iconBase + "blue.png",
+				  },
+				};
+				const features = [
+				  {
+					position: new google.maps.LatLng(50.535909, 18.075955),
+					type: "orange",
+					desc: '<h4>Sanktuarium w Kamieniu Śląskim</h4><p>Miejsce urodzenia św. Jacka</p><a href="#more" class="btn btn-primary">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.669131, 17.925467),
+					type: "blue",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(51.1094198, 17.0390605),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.0590328, 19.9389233),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(52.1754284, 21.0351015),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(52.2511656, 21.0068534),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(53.4360106, 14.5503355),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(49.2651214, 20.081923),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.2621957, 19.0132898),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(52.4114661, 16.9177454),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.3203063, 17.5777089),
+					type: "blue",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.9655246, 19.4695547),
+					type: "red",
+					desc: '<h3>Sanktuarium w Kamieniu Śląskim</h3>Miejsce urodzenia św. Jacka <a href="#more">Czytaj więcej</a>'
+				  },
+				];
+
+				// Create markers.
+				for (let i = 0; i < features.length; i++) {
+				  const marker = new google.maps.Marker({
+					position: features[i].position,
+					icon: icons[features[i].type].icon,
+					map: map,
+				  });
+				  const infoWindow = new google.maps.InfoWindow({
+					content: features[i].desc
+				  });
+				  marker.addListener("click", () => {
+					infoWindow.open(map, marker);
+				  });
+				}
+			  }
+		</script>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <div class="container">
+                    <div class="row gx-2 gy-2">
+                        <div class="col-md-3">
+                            <a href="#home" class="menu-item" onclick="closeNav()"><i class="fas fa-home"></i><br>Home</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#map" class="menu-item" onclick="closeNav()"><i class="fas fa-map-marked-alt"></i><br>Mapa</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#places" class="menu-item" onclick="closeNav()"><i class="fas fa-place-of-worship"></i><br>Miejsca</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#trips" class="menu-item" onclick="closeNav()"><i class="fas fa-shoe-prints"></i><br>Trasy</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#timeline" class="menu-item" onclick="closeNav()"><i class="fas fa-book-reader"></i><br>Historia</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#saints" class="menu-item" onclick="closeNav()"><i class="fas fa-users"></i><br>Święci i zasłużeni</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#about" class="menu-item" onclick="closeNav()"><i class="fas fa-project-diagram"></i><br>O projekcie</a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="https://zakon.dominikanie.pl" class="menu-item" onclick="closeNav()"><i class="fas fa-cross"></i><br>Zakon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<nav class="navbar fixed-top navbar-light bg-dark mnavbar">
+			<div class="container-fluid">
+			  	<div class="container">
+					<div class="row">
+						<div class="col logo-main">
+							<a href="#"><img src="img/logo-white.png" alt="Logo"></a>
+						</div>
+						<div class="col nav-lang-menu">
+							<div class="lang">
+								<a href="/en/"><img src="img/flags/uk64.png"/></a>
+								<a href="/ru/"><img src="img/flags/russia64.png"/></a>
+							</div>
+							<span onclick="openNav()"><i class="fas fa-bars"></i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+        <!-- Hero -->
+        <header>
+            <section class="hero" id="home">
+				<div class="container">
+					<div class="row hero-content" data-aos="fade-up" data-aos-once="true" data-aos-easing="linear">
+						<div class="col-md-12">
+							<h1>
+								<img src="img/odrowaz.png" width="100px" /><br>
+								Śladami Polskich Dominikanów
+							</h1>
+							<h2>
+								Od 800 lat głosimy wszystkim, wszędzie i na wszelki możliwy sposób.
+								Poznaj naszą historię, odwiedź miejsca z nami związane,
+								przeczytaj o naszych świętych!
+							</h2>
+							<div class="search">
+								<form method="post" action=".">
+									<input type="text" class="search-field fadeInUp" placeholder="Wpisz miejsce, osobę lub nazwę trasy...">
+									<button type="submit" class="search-btn fadeInUp"><i class="fas fa-search"></i> Szukaj </button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </section>
+        </header>
+
+        <!-- Map -->
+        <section class="map" id="map">
+            <div class="row g-0">
+                <div class="col-md-4 map-sidebar" data-aos="fade-right" data-aos-once="true">
+					<h1>Mapa</h1>
+
+					<img src="img/marker/red.png"> - istniejące klasztory męskie<br>
+					<img src="img/marker/green.png"> - istniejące klasztory żeńskie<br>
+					<img src="img/marker/blue.png"> - istniejące kościoły podominikańskie<br>
+					<img src="img/marker/orange.png"> - miejsca związane z historią dominikanów<br>
+					<img src="img/marker/gray.png"> - fraternie dominikańskie<br>
+					<img src="img/marker/black.png"> - nieistniejące kościoły i klasztory<br>
+
+					<div class="map-filters">
+						<h2>Filtry</h2>
+						<label for="status">Stan zachowania:</label>
+						<select id="status" class="form-select form-select-sm">
+						  <option selected>Dowolny</option>
+						  <option value="1">Istniejący</option>
+						  <option value="2">Nieistniejący</option>
+						</select>
+						<label for="region">Województwo:</label>
+						<select id="region" class="form-select form-select-sm">
+						  <option selected>Wszystkie</option>
+						  <option value="1">Dolnośląskie</option>
+						  <option value="2">Małopolskie</option>
+						  <option value="3">Opolskie</option>
+						  <option value="4">Śląskie</option>
+						</select>
+						<label for="part">Gałąź zakonu:</label>
+						<select id="part" class="form-select form-select-sm">
+						  <option selected>Wszystkie</option>
+						  <option value="1">Bracia</option>
+						  <option value="2">Mniszki</option>
+						  <option value="3">Świeccy</option>
+						</select>
+						<label for="part">Inne:</label>
+						<select id="part" class="form-select form-select-sm">
+						  <option selected>Wszystkie</option>
+						  <option value="1">Saktuaria</option>
+						  <option value="2">Cudowne obrazy i figurki</option>
+						  <option value="3">Relikwie</option>
+						</select>
+						<br>
+						<button type="button" class="btn btn-primary float-end">Filtruj</button>
+						<br>
+					</div>
+				</div>
+				<div class="col-md-8 text-center">
+					<div id="gm"></div>
+				</div>
+            </div>
+        </section>
+
+        <!-- Places -->
+        <section class="places" id="places">
+            <div class="row g-0">
+				<div class="col-xl-8 align-self-center">
+					<div id="places-carousel" class="carousel slide" data-bs-ride="carousel">
+					  <div class="carousel-inner">
+						<div class="carousel-item active">
+						  <div class="carousel-img">
+							  <img src="img/places/wiktorowki.png" class="d-block w-100" alt="Wiktorówki">
+						  </div>
+						  <div class="carousel-item-desc">
+							<h2>Wiktorówki</h2>
+							<p>Sanktuarium Matki Bożej Królowej Tatr</p>
+						  </div>
+						</div>
+						<div class="carousel-item">
+						  <div class="carousel-img">
+							<img src="img/places/szczecin.png" class="d-block w-100" alt="...">
+						  </div>
+						  <div class="carousel-item-desc">
+							<h2>Szczecin</h2>
+							<p>Klasztor i kościół św. Dominika</p>
+						  </div>
+						</div>
+						<div class="carousel-item">
+						  <div class="carousel-img">
+						    <img src="img/places/gidle.png" class="d-block w-100" alt="...">
+						  </div>
+						  <div class="carousel-item-desc">
+							<h2>Gidle</h2>
+							<p>Bazylika mniejsza Wniebowzięcia NMP</p>
+						  </div>
+						</div>
+						<div class="carousel-item">
+						  <div class="carousel-img">
+						    <img src="img/places/wroclaw.png" class="d-block w-100" alt="...">
+						  </div>
+						  <div class="carousel-item-desc">
+							<h2>Wrocław</h2>
+							<p>Kaplica akademicka w kościele św. Wojciecha</p>
+						  </div>
+						</div>
+						<div class="carousel-item">
+						  <div class="carousel-img">
+						    <img src="img/places/prudnik.png" class="d-block w-100" alt="...">
+						  </div>
+						  <div class="carousel-item-desc">
+							<h2>Prudnik</h2>
+							<p>Podominikański kościół św. Michała Archanioła</p>
+						  </div>
+						</div>
+					  </div>
+					  <button class="carousel-control-prev" type="button" data-bs-target="#places-carousel"  data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Poprzedni</span>
+					  </button>
+					  <button class="carousel-control-next" type="button" data-bs-target="#places-carousel"  data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Następny</span>
+					  </button>
+					</div>
+				</div>
+				<div class="col-xl-4 places-sidebar" data-aos="fade-left" data-aos-once="true">
+					<div class="places-desc">
+						<h1>Miejsca</h1>
+                        <div class="panel panel-primary">
+                            <div class="panel-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><a href="#"><strong>Bochnia</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Bolesławiec</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Borek Stary</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Brzeg</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Brześć Kujawski</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Bytom</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Chełmno</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Cieszanów</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Cieszyn</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Choroszcz</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Dzwola</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Elbląg</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Głogów</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Gidle</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Gidle</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Bracia obserwanci)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Mniszki)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Horodło</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Hrubieszów</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Ińsko (niem. Norenberg)</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Jamna</strong></a> (Bracia)</li>
+                                    <li class="list-group-item"><a href="#"><strong>Janów Lubelski</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Janów Podlaski</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kamień Pomorski</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Katowice</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Klimontów</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Klimówka</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kościan</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Dom rekolekcyjny)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Mniszki)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Beginki)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Fraternia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Krasnobród</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Krasnybór</strong> (Bracia)</a></li>
+                                    <li class="list-group-item"><a href="#"><strong>Krosno Odrzańskie</strong> (Bracia)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+					</div>
+				</div>
+			</div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="timeline" id="timeline" data-aos="fade-up ease-in-sine" data-aos-once="true">
+            <h1>Historia zakonu i Prowincji Polskiej</h1>
+			<ol id="timeline-drag">
+                <li>
+					<div>
+						<time>ok. 1170</time>
+						W Caleruedze (Hiszpania) rodzi się Dominik Guzmán.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1203</time>
+						Biskup Diego z Acebes i Dominik Guzmán, podprzeor jego kapituły, wyruszają na misję nawracania katarów.
+						Uprawiają wędrowne kaznodziejstwo na wzór apostolski.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1206</time>
+						Dominik zakłada pierwszy klasztor w Prouille, w którym zamieszkują nawrócone przez Dominika i towarzyszy kobiety.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1215</time>
+						W Tuluzie tworzy się wspólnota wędrownych kaznodziejów, którym przewodzi Dominik.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>22 XII 1216</time>
+						Papież Honoriusz III wydaje bullę zatwierdzającą nowy zakon w Kościele. Jako regułę Dominik wybiera regułę św. Augustyna, przy czym bracia wyrzekają się wszelkich form własności, stając się zakonem żebraczym.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1221</time>
+						Jacek Odrowąż przyjmuje w Rzymie habit dominikański z rąk św. Dominika, po czym wraz z towarzyszami wyrusza na misję ewangelizacji Karyntii, Moraw, Czech, Polski, Rusi i Prus.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1223</time>
+						Powstaje pierwszy w Polsce konwent dominikański - Konwent Świętej Trójcy w Krakowie.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1226</time>
+						Powstaje Konwent św. Jakuba Apostoła w Sandomierzu.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1226</time>
+						Powstaje Konwent św. Wojciecha we Wrocławiu.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1227</time>
+						Powstaje Konwent św. Mikołaja w Gdańsku.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1253</time>
+						Powstaje Konwent Matki Bożej Różańcowej w Poznaniu.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>1253</time>
+						Powstaje Konwent św. Stanisława Biskupa i Męczennika w Lublinie.
+					</div>
+				</li>
+				<li>
+					<div>
+						<time>15 VIII 1257</time>
+						Jacek Odrowąż umiera w Krakowie.
+					</div>
+				</li>
+				<li></li>
+			</ol>
+        </section>
+
+        <!-- Saints -->
+        <section class="saints" id="saints">
+            <h1>Święci i zasłużeni</h1>
+            <div class="slides">
+                <div class="row g-0">
+					<div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/dominik.jpg" 
+                                        data-caption="<b>Święty Dominik</b><br>Założyciel naszego zakonu<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/dominik.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-xl">
+                                <div class="desc">
+                                    <a href="#">
+                                        <h2>Święty Dominik</h2>
+                                        <p>Założyciel naszego zakonu</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/jacek.jpg" 
+                                        data-caption="<b>Święty Jacek</b><br>Pierwszy polski dominikanin<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/jacek.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-xl">
+                                <div class="desc">
+                                    <a href="#">
+                                        <h2>Święty Jacek</h2>
+                                        <p>Pierwszy polski dominikanin</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl">
+                                <div class="desc-right">
+                                    <a href="#">
+                                        <h2>Błogosławiony Czesław</h2>
+                                        <p>Brat św. Jacka, patron Wrocławia</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/czeslaw.jpg" 
+                                        data-caption="<b>Błogosławiony Czesław</b><br>Brat Świętego Jacka, Patron Wrocławia<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/czeslaw.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl">
+                                <div class="desc-right">
+                                    <a href="#">
+                                        <h2>Błogosławiony Sadok<br> i towarzysze</h2>
+                                        <p>Męczennicy Sandomierscy</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/sadok.jpg" 
+                                        data-caption="<b>Błogosławiony Sadok i towarzysze</b><br>49 męczenników z Sandomierza<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/sadok.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/czartoryski.jpg" 
+                                        data-caption="<b>Błogosławiony Michał Czartoryski</b><br>Męczennik II Wojny Światowej<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/czartoryski.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-xl">
+                                <div class="desc">
+                                    <a href="#">
+                                        <h2>Błogosławiony<br> Michał Czartoryski</h2>
+                                        <p>Męczennik II Wojny Światowej</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="row g-0">
+                            <div class="col-xl slide">
+                                <figure>
+                                    <a data-fancybox="sk" href="img/sk/large/woroniecki.jpg" 
+                                        data-caption="<b>Sługa Boży Jacek Woroniecki</b><br>Pionier odrodzenia dominikańskiego po 1918 roku<br><br><a href='#' class='btn btn-primary'>Przeczytaj więcej</a>">
+                                        <img class="img-fluid" src="img/sk/woroniecki.jpg">
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="col-xl">
+                                <div class="desc">
+                                    <a href="#">
+                                        <h2>Sługa Boży <br>Jacek Woroniecki</h2>
+                                        <p>Pionier odrodzenia dominikańskiego po 1918 roku</p>
+                                        <i class="fas fa-chevron-circle-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="show-more">
+                <a href="#" class="btn"><i class="fas fa-angle-down"></i> Pokaż więcej</a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about" id="about">
+            <div class="container" data-aos="fade-right" data-aos-once="true">
+                <h1>O projekcie</h1>
+                <p>
+                    Projekt „Śladami dominikanów w Polsce” jest odpowiedzią świeckich dominikanów na wezwanie
+                    o. Tomasza Zamorskiego OP do włączenia się w obchody 800-lecia przybycia
+                    dominikanów do Polski. Od czasu rekolekcji prowincjalnych w Korbielowie (24-27.09.2020)
+                    bracia i siostry wraz z o. Markiem Miławickim OP
+                    opracowywali projekt utworzenia strony, która zebrałaby w przystępnej formie informacje
+                    o działalności dominikanów w Polsce na przestrzeni 800 lat.
+                    <br>
+                    Mamy nadzieję, że strona ta przysłuży się do szerszego poznania dziedzictwa zakonu
+                    i zachęci wielu do odwiedzenia miejsc z nim związanych!
+                </p>
+                <a data-fancybox href="http://www.youtube.com/watch?v=33om6HqqIHU" class="video-btn youtube-media"><i class="far fa-play-circle"></i> Zobacz film z realizacji projektu!</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7">
+						<h1 class="footer-logo">
+							<a href="https://swieccy.dominikanie.pl"><img src="img/swieccy_log.png"></a>
+						</h1>
+						<p>© 2021 - Świeccy Zakonu Kaznodziejskiego Prowincji Polskiej</p>
+						<div class="footer-links">
+							<a href="https://facebook.com/dominikanie"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/Dominikaniepl"><i class="fab fa-twitter"></i></a>
+							<a href="https://pl.pinterest.com/dominikanie/"><i class="fab fa-pinterest"></i></a>
+							<a href="https://www.instagram.com/dominikanie/"><i class="fab fa-instagram"></i></a>
+							<a href="https://sklep.dominikanie.pl/"><i class="fas fa-shopping-cart"></i></a>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="footer-links">
+                            <br>
+							<p>Znasz ciekawostki związane z Polskimi Dominikanami?</p>
+							<button type="button" class="contact-btn" data-bs-toggle="modal" data-bs-target="#contact"><i class="fas fa-pen"></i> Napisz do nas!</button>
+						</div>
+					</div>
+					<div id="contact" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h2 class="modal-title">Napisz do nas!</h2>
+								</div>
+								<form method="post">
+									<div class="modal-body">
+										<div class="form-floating mb-3">
+										  <input type="text" class="form-control" id="name">
+										  <label for="name">Imię i nazwisko</label>
+										</div>
+										<div class="form-floating mb-3">
+										  <input type="email" class="form-control" id="email">
+										  <label for="email">Adres e-mail</label>
+										</div>
+										<div class="form-floating mb-3">
+											<textarea id="content" name="content" class="form-control" style="height: 100px;"></textarea>
+											<label for="content">Treść wiadomości</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-bs-dismiss="modal">Zamknij</button>
+										<button type="button" class="btn btn-primary">Wyślij</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+        <!-- Scripts -->
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.fancybox.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdgZ4PBBZt15GfXf3IVoisPS20Wf1aGnY&map_ids=31bd4f47a80b6c80&callback=initMap&libraries=&v=weekly" async></script>
+    </body>
+</html>
