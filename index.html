@@ -137,39 +137,21 @@
     </head>
     <body>
         <!-- Menu -->
-        <div id="myNav" class="overlay">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <div class="overlay-content">
-                <div class="container">
-                    <div class="row gx-2 gy-2">
-                        <div class="col-md-3">
-                            <a href="#home" class="menu-item" onclick="closeNav()"><i class="fas fa-home"></i><br>Home</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#map" class="menu-item" onclick="closeNav()"><i class="fas fa-map-marked-alt"></i><br>Mapa</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#places" class="menu-item" onclick="closeNav()"><i class="fas fa-place-of-worship"></i><br>Miejsca</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#trips" class="menu-item" onclick="closeNav()"><i class="fas fa-shoe-prints"></i><br>Trasy</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#timeline" class="menu-item" onclick="closeNav()"><i class="fas fa-book-reader"></i><br>Historia</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#saints" class="menu-item" onclick="closeNav()"><i class="fas fa-users"></i><br>Święci i zasłużeni</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="#about" class="menu-item" onclick="closeNav()"><i class="fas fa-project-diagram"></i><br>O projekcie</a>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="https://zakon.dominikanie.pl" class="menu-item" onclick="closeNav()"><i class="fas fa-cross"></i><br>Zakon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+		<div id="myNav" class="overlay">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<div class="overlay-content">
+				<div class="container">
+					<a href="#home" class="menu-item2" onclick="closeNav()">Strona główna</a>
+					<a href="#map" class="menu-item2" onclick="closeNav()">Mapa</a>
+					<a href="#places" class="menu-item2" onclick="closeNav()">Miejsca</a>
+					<a href="#trips" class="menu-item2" onclick="closeNav()">Trasy</a>
+					<a href="#timeline" class="menu-item2" onclick="closeNav()">Historia</a>
+					<a href="#saints" class="menu-item2" onclick="closeNav()">Święci i zasłużeni</a>
+					<a href="#about" class="menu-item2" onclick="closeNav()">O projekcie</a>
+					<a href="https://zakon.dominikanie.pl" class="menu-item2" onclick="closeNav()">Zakon</a>
+				</div>
+			</div>
+		</div>
 
 		<nav class="navbar fixed-top navbar-light bg-dark mnavbar">
 			<div class="container-fluid">
@@ -179,10 +161,10 @@
 							<a href="#"><img src="img/logo-white.png" alt="Logo"></a>
 						</div>
 						<div class="col nav-lang-menu">
-							<div class="lang">
+							<!--<div class="lang">
 								<a href="/en/"><img src="img/flags/uk64.png"/></a>
 								<a href="/ru/"><img src="img/flags/russia64.png"/></a>
-							</div>
+							</div>-->
 							<span onclick="openNav()"><i class="fas fa-bars"></i></span>
 						</div>
 					</div>
@@ -197,7 +179,7 @@
 					<div class="row hero-content" data-aos="fade-up" data-aos-once="true" data-aos-easing="linear">
 						<div class="col-md-12">
 							<h1>
-								<img src="img/odrowaz.png" width="100px" /><br>
+								<img src="img/odrowaz.png" width="120px" /><br>
 								Śladami Polskich Dominikanów
 							</h1>
 							<h2>
@@ -219,170 +201,173 @@
 
         <!-- Map -->
         <section class="map" id="map">
-            <div class="row g-0">
-                <div class="col-md-4 map-sidebar" data-aos="fade-right" data-aos-once="true">
-					<h1>Mapa</h1>
+			<div class="container">
+				<h1>Mapa</h1>
+				<div class="row">
+					<div class="col"><center><img src="img/marker/red.png"> - istniejące klasztory męskie</center></div>
+					<div class="col"><center><img src="img/marker/green.png"> - istniejące klasztory żeńskie</center></div>
+					<div class="col"><center><img src="img/marker/blue.png"> - istniejące kościoły podominikańskie</center></div>
+				</div>
+				<div class="row">
+					<div class="col"><center><img src="img/marker/orange.png"> - miejsca związane z historią dominikanów</center></div>
+					<div class="col"><center><img src="img/marker/gray.png"> - fraternie dominikańskie</center></div>
+					<div class="col"><center><img src="img/marker/black.png"> - nieistniejące kościoły i klasztory</center></div>
+				</div>
 
-					<img src="img/marker/red.png"> - istniejące klasztory męskie<br>
-					<img src="img/marker/green.png"> - istniejące klasztory żeńskie<br>
-					<img src="img/marker/blue.png"> - istniejące kościoły podominikańskie<br>
-					<img src="img/marker/orange.png"> - miejsca związane z historią dominikanów<br>
-					<img src="img/marker/gray.png"> - fraternie dominikańskie<br>
-					<img src="img/marker/black.png"> - nieistniejące kościoły i klasztory<br>
-
-					<div class="map-filters">
-						<h2>Filtry</h2>
-						<label for="status">Stan zachowania:</label>
-						<select id="status" class="form-select form-select-sm">
-						  <option selected>Dowolny</option>
-						  <option value="1">Istniejący</option>
-						  <option value="2">Nieistniejący</option>
-						</select>
-						<label for="region">Województwo:</label>
-						<select id="region" class="form-select form-select-sm">
-						  <option selected>Wszystkie</option>
-						  <option value="1">Dolnośląskie</option>
-						  <option value="2">Małopolskie</option>
-						  <option value="3">Opolskie</option>
-						  <option value="4">Śląskie</option>
-						</select>
-						<label for="part">Gałąź zakonu:</label>
-						<select id="part" class="form-select form-select-sm">
-						  <option selected>Wszystkie</option>
-						  <option value="1">Bracia</option>
-						  <option value="2">Mniszki</option>
-						  <option value="3">Świeccy</option>
-						</select>
-						<label for="part">Inne:</label>
-						<select id="part" class="form-select form-select-sm">
-						  <option selected>Wszystkie</option>
-						  <option value="1">Saktuaria</option>
-						  <option value="2">Cudowne obrazy i figurki</option>
-						  <option value="3">Relikwie</option>
-						</select>
-						<br>
-						<button type="button" class="btn btn-primary float-end">Filtruj</button>
-						<br>
+				<div class="map-filters">
+					<div class="row">
+						<div class="col-3"><label for="status">Stan zachowania:</label>
+							<select id="status" class="form-select form-select-sm">
+								<option selected>Dowolny</option>
+								<option value="1">Istniejący</option>
+								<option value="2">Nieistniejący</option>
+							</select></div>
+						<div class="col-3"><label for="region">Województwo:</label>
+							<select id="region" class="form-select form-select-sm">
+								<option selected>Wszystkie</option>
+								<option value="1">Dolnośląskie</option>
+								<option value="2">Małopolskie</option>
+								<option value="3">Opolskie</option>
+								<option value="4">Śląskie</option>
+							</select></div>
+						<div class="col-3"><label for="part">Gałąź zakonu:</label>
+							<select id="part" class="form-select form-select-sm">
+								<option selected>Wszystkie</option>
+								<option value="1">Bracia</option>
+								<option value="2">Mniszki</option>
+								<option value="3">Świeccy</option>
+							</select></div>
+						<div class="col-3"><label for="part">Inne:</label>
+							<select id="part" class="form-select form-select-sm">
+								<option selected>Wszystkie</option>
+								<option value="1">Saktuaria</option>
+								<option value="2">Cudowne obrazy i figurki</option>
+								<option value="3">Relikwie</option>
+							</select></div>
+					</div>
+					<div class="row">
+						<div class="col-12"><button type="button" class="btn btn-primary float-end">Filtruj</button></div>
 					</div>
 				</div>
-				<div class="col-md-8 text-center">
-					<div id="gm"></div>
-				</div>
-            </div>
+				<div id="gm"></div>
+			</div>
         </section>
 
         <!-- Places -->
         <section class="places" id="places">
-            <div class="row g-0">
-				<div class="col-xl-8 align-self-center">
-					<div id="places-carousel" class="carousel slide" data-bs-ride="carousel">
-					  <div class="carousel-inner">
-						<div class="carousel-item active">
-						  <div class="carousel-img">
-							  <img src="img/places/wiktorowki.png" class="d-block w-100" alt="Wiktorówki">
-						  </div>
-						  <div class="carousel-item-desc">
-							<h2>Wiktorówki</h2>
-							<p>Sanktuarium Matki Bożej Królowej Tatr</p>
-						  </div>
+			<div class="container">
+				<h1>Miejsca</h1>
+				<div class="row g-0">
+					<div class="col-xl-8 align-self-center">
+						<div id="places-carousel" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+							<div class="carousel-img">
+								<img src="img/places/wiktorowki.jpg" class="d-block w-100" alt="Wiktorówki">
+							</div>
+							<div class="carousel-item-desc">
+								<h2>Wiktorówki</h2>
+								<p>Sanktuarium Matki Bożej Królowej Tatr</p>
+							</div>
+							</div>
+							<div class="carousel-item">
+							<div class="carousel-img">
+								<img src="img/places/szczecin.jpg" class="d-block w-100" alt="Szczecin">
+							</div>
+							<div class="carousel-item-desc">
+								<h2>Szczecin</h2>
+								<p>Klasztor i kościół św. Dominika</p>
+							</div>
+							</div>
+							<div class="carousel-item">
+							<div class="carousel-img">
+								<img src="img/places/gidle.jpg" class="d-block w-100" alt="Gidle">
+							</div>
+							<div class="carousel-item-desc">
+								<h2>Gidle</h2>
+								<p>Bazylika mniejsza Wniebowzięcia NMP</p>
+							</div>
+							</div>
+							<div class="carousel-item">
+							<div class="carousel-img">
+								<img src="img/places/wroclaw.jpg" class="d-block w-100" alt="Wrocław">
+							</div>
+							<div class="carousel-item-desc">
+								<h2>Wrocław</h2>
+								<p>Kaplica akademicka w kościele św. Wojciecha</p>
+							</div>
+							</div>
+							<div class="carousel-item">
+							<div class="carousel-img">
+								<img src="img/places/prudnik.jpg" class="d-block w-100" alt="Prudnik">
+							</div>
+							<div class="carousel-item-desc">
+								<h2>Prudnik</h2>
+								<p>Podominikański kościół św. Michała Archanioła</p>
+							</div>
+							</div>
 						</div>
-						<div class="carousel-item">
-						  <div class="carousel-img">
-							<img src="img/places/szczecin.png" class="d-block w-100" alt="...">
-						  </div>
-						  <div class="carousel-item-desc">
-							<h2>Szczecin</h2>
-							<p>Klasztor i kościół św. Dominika</p>
-						  </div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#places-carousel"  data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Poprzedni</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#places-carousel"  data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Następny</span>
+						</button>
 						</div>
-						<div class="carousel-item">
-						  <div class="carousel-img">
-						    <img src="img/places/gidle.png" class="d-block w-100" alt="...">
-						  </div>
-						  <div class="carousel-item-desc">
-							<h2>Gidle</h2>
-							<p>Bazylika mniejsza Wniebowzięcia NMP</p>
-						  </div>
-						</div>
-						<div class="carousel-item">
-						  <div class="carousel-img">
-						    <img src="img/places/wroclaw.png" class="d-block w-100" alt="...">
-						  </div>
-						  <div class="carousel-item-desc">
-							<h2>Wrocław</h2>
-							<p>Kaplica akademicka w kościele św. Wojciecha</p>
-						  </div>
-						</div>
-						<div class="carousel-item">
-						  <div class="carousel-img">
-						    <img src="img/places/prudnik.png" class="d-block w-100" alt="...">
-						  </div>
-						  <div class="carousel-item-desc">
-							<h2>Prudnik</h2>
-							<p>Podominikański kościół św. Michała Archanioła</p>
-						  </div>
-						</div>
-					  </div>
-					  <button class="carousel-control-prev" type="button" data-bs-target="#places-carousel"  data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Poprzedni</span>
-					  </button>
-					  <button class="carousel-control-next" type="button" data-bs-target="#places-carousel"  data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Następny</span>
-					  </button>
 					</div>
-				</div>
-				<div class="col-xl-4 places-sidebar" data-aos="fade-left" data-aos-once="true">
-					<div class="places-desc">
-						<h1>Miejsca</h1>
-                        <div class="panel panel-primary">
-                            <div class="panel-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><a href="#"><strong>Bochnia</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Bolesławiec</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Borek Stary</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Brzeg</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Brześć Kujawski</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Bytom</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Chełmno</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Cieszanów</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Cieszyn</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Choroszcz</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Dzwola</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Elbląg</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Głogów</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Gidle</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Gidle</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Bracia obserwanci)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Mniszki)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Horodło</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Hrubieszów</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Ińsko (niem. Norenberg)</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Jamna</strong></a> (Bracia)</li>
-                                    <li class="list-group-item"><a href="#"><strong>Janów Lubelski</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Janów Podlaski</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kamień Pomorski</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Katowice</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Klimontów</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Klimówka</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kościan</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Dom rekolekcyjny)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Mniszki)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Beginki)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Kraków</strong> (Fraternia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Krasnobród</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Krasnybór</strong> (Bracia)</a></li>
-                                    <li class="list-group-item"><a href="#"><strong>Krosno Odrzańskie</strong> (Bracia)</a></li>
-                                </ul>
-                            </div>
-                        </div>
+					<div class="col-xl-4 places-sidebar" data-aos="fade-left" data-aos-once="true">
+						<div class="places-desc">
+							
+							<div class="panel panel-primary">
+								<div class="panel-body">
+									<ul class="list-group">
+										<li class="list-group-item"><a href="#"><strong>Bochnia</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Bolesławiec</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Borek Stary</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Brzeg</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Brześć Kujawski</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Bytom</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Chełmno</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Cieszanów</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Cieszyn</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Choroszcz</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Dzwola</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Elbląg</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Gdańsk</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Głogów</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Gidle</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Gidle</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Bracia obserwanci)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Góra Kalwaria</strong> (Mniszki)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Horodło</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Hrubieszów</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Ińsko (niem. Norenberg)</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Jamna</strong></a> (Bracia)</li>
+										<li class="list-group-item"><a href="#"><strong>Janów Lubelski</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Janów Podlaski</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Jarosław</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kamień Pomorski</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Katowice</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Klimontów</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Klimówka</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kościan</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Korbielów</strong> (Dom rekolekcyjny)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kraków</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kraków</strong> (Mniszki)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kraków</strong> (Beginki)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Kraków</strong> (Fraternia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Krasnobród</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Krasnybór</strong> (Bracia)</a></li>
+										<li class="list-group-item"><a href="#"><strong>Krosno Odrzańskie</strong> (Bracia)</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -629,11 +614,14 @@
                     bracia i siostry wraz z o. Markiem Miławickim OP
                     opracowywali projekt utworzenia strony, która zebrałaby w przystępnej formie informacje
                     o działalności dominikanów w Polsce na przestrzeni 800 lat.
-                    <br>
+                    <br><br>
                     Mamy nadzieję, że strona ta przysłuży się do szerszego poznania dziedzictwa zakonu
                     i zachęci wielu do odwiedzenia miejsc z nim związanych!
+					<br><br>
                 </p>
-                <a data-fancybox href="http://www.youtube.com/watch?v=33om6HqqIHU" class="video-btn youtube-media"><i class="far fa-play-circle"></i> Zobacz film z realizacji projektu!</a>
+				<center>
+    	            <a data-fancybox href="http://www.youtube.com/watch?v=33om6HqqIHU" class="video-btn youtube-media"><i class="far fa-play-circle"></i> Zobacz film z realizacji projektu!</a>
+				</center>
             </div>
         </section>
 

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+
+        <title>Śladami Polskich Dominikanów</title>
+
+        <!-- Stylesheets -->
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+        <link href="css/jquery.fancybox.css" rel="stylesheet">
+        <link href="css/aos.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script>
+			  let map;
+
+			  function initMap() {
+				map = new google.maps.Map(document.getElementById("p-gm"), {
+				  zoom: 12,
+				  center: { lat: 50.3199903, lng: 17.5769624 },
+				  mapTypeControl: false,
+				  mapTypeId: "terrain"
+				});
+				const iconBase =
+				  "img/marker/";
+				const icons = {
+				  red: {
+					icon: iconBase + "red.png",
+				  },
+				  orange: {
+					icon: iconBase + "orange.png",
+				  },
+				  blue: {
+					icon: iconBase + "blue.png",
+				  },
+				};
+				const features = [
+				  {
+					position: new google.maps.LatLng(50.3199903, 17.5769624),
+					type: "blue",
+					desc: 'Podominikański Kościół św. Michała Archanioła w Prudniku'
+				  }
+				];
+
+				// Create markers.
+				for (let i = 0; i < features.length; i++) {
+				  const marker = new google.maps.Marker({
+					position: features[i].position,
+					icon: icons[features[i].type].icon,
+					map: map,
+				  });
+				  const infoWindow = new google.maps.InfoWindow({
+					content: features[i].desc
+				  });
+				  marker.addListener("click", () => {
+					infoWindow.open(map, marker);
+				  });
+				}
+			  }
+		</script>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <div class="container">
+                    <a href="index.html" class="menu-item2" onclick="closeNav()">Strona główna</a>
+                    <a href="#map" class="menu-item2" onclick="closeNav()">Mapa</a>
+                    <a href="#about" class="menu-item2" onclick="closeNav()">Krótko o kościele</a>
+                    <a href="#timeline" class="menu-item2" onclick="closeNav()">Historia</a>
+                    <a href="#worship" class="menu-item2" onclick="closeNav()">Kult</a>
+                    <a href="#gallery" class="menu-item2" onclick="closeNav()">Galeria</a>
+                    <a href="#connected" class="menu-item2" onclick="closeNav()">Związani z tym miejscem</a>
+                    <a href="#interesting-facts" class="menu-item2" onclick="closeNav()">Ciekawostki</a>
+                    <a href="#routes" class="menu-item2" onclick="closeNav()">Szlaki</a>
+                    <a href="#bibliography" class="menu-item2" onclick="closeNav()">Bibliografia</a>
+                    <a href="#comments" class="menu-item2" onclick="closeNav()">Komentarze</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar fixed-top bg-dark">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col logo-main">
+                            <a href="index.html" class="place-arrow-back">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>&nbsp;&nbsp;
+                            <a href="#"><img src="img/logo-white.png" alt="Logo"></a>
+                        </div>
+                        <div class="col nav-lang-menu">
+                            <!--<div class="lang">
+                                <a href="/en/"><img src="img/flags/uk64.png"/></a>
+                                <a href="/ru/"><img src="img/flags/russia64.png"/></a>
+                            </div>-->
+                            <span onclick="openNav()"><i class="fas fa-bars"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Hero -->
+        <header>
+            <section class="place-hero" id="home" style="background: url('img/places/raw/prudnik.jpg') no-repeat center center; background-size: cover;">
+                <div class="place-hero-h">
+                    <div class="container">
+                        <div class="row hero-content " data-aos="fade-up" data-aos-once="true" data-aos-easing="linear">
+                                <h1><i class="fas fa-map-marker-alt"></i><br>Prudnik</h1>
+                                <h2>Podominikański kościół <br>św. Michała Archanioła</h2>
+                                <div class="place-hero-a">
+                                    <a href="#map"><i class="fas fa-arrow-circle-down"></i>&nbsp;&nbsp;<span>Czytaj więcej</span></a>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+
+        <!-- Map -->
+        <section class="map" id="map">
+            <div class="container">
+                <h1>Lokalizacja</h1>
+                <div class="row">
+                    <div class="col-xl-9">
+                        <div id="p-gm"></div>
+                    </div>
+                    <div class="col-xl-3 p-info">
+                        <h3>Dane adresowe</h3>
+                        <b>Województwo:</b> Opolskie<br>
+                        <b>Diecezja:</b> Opolska<br>
+                        <b>Miejscowość:</b> Prudnik<br>
+                        <b>Ulica:</b> Plac Farny 2<br>
+                        <hr>
+                        <h3>Kontakt</h3>
+                        <p>
+                            tel. (+48) 77 46 71 120<br>
+                            fax (+48) 77 46 71 117<br>
+                            e-mail: <a href="mailto:zamek@kamien.biz">zamek@kamien.biz</a>
+                        </p>
+                        <hr>
+                        <p><a href="#" class="btn btn-primary w-100"><i class="fas fa-location-arrow"></i> Nawiguj do tego miejsca</a></p>
+                        <p><a href="#" class="btn btn-outline-primary w-100"><i class="fas fa-route"></i> Zaplanuj trasę</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="p-about" id="about">
+            <div class="container" data-aos="fade-right" data-aos-once="true">
+                <h1>Krótko o kościele...</h1>
+                <p>Pierwsze wzmianki o kościele pochodzą z 1321 roku. Na początku był to kościół drewniany. W 1554 roku przejęli go protestanci , którzy rozpoczęli przebudowę. Prace przerwał pożar w 1627 roku.</p>
+                <p>Zgliszcza odzyskali na powrót katolicy i w 1730 roku rozpoczęto kolejną przebudowę. Murowany, tynkowany, z prostokątnym korpusem, półkolistym prezbiterium jest jednym z największych kościołów w Prudniku. Reprezentuje późny barok. Ciekawie rozwiązane są wnętrza - w kościele na piętrze znajdują się loże, do których prowadzą specjalne schody.</p>
+                <p>Świątynia posiada trzypiętrową wieżę. Dach dwuspadowy, podobnie jak daszki prezbiterium, krucht i przybudówek, kryty jest blachą. W 1946 roku kościół przejęli dominikanie, którzy przeprowadzili remont po zniszczeniach wojennych.</p>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="p-timeline" id="timeline">
+            <div class="container">
+                <h1>Historia</h1>
+                <div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Pierwszy Kościół w Prudniku</h4>
+                                <p>Z 1279 roku pochodził pierwszy drewniany kościół pod wezwaniem Wniebowzięcia Najświętszej Maryi Panny w Prudniku. Obrazy do świątyni namalował Christian Bentum.</p> 
+                                <span class="vertical-timeline-element-date">II poł. XIII wieku</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Pierwsze pisemne wzmianki</h4>
+                                <p>Z lat 1321 i 1331 pochodzą pierwsze zachowane pisemne wzmianki o kościele w Prudniku. Pierwszy proboszcz nazywał się Milotha.</p>
+                                <span class="vertical-timeline-element-date">1321, 1331</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Luteranie</h4>
+                                <p>W wyniku postępującej reformacji, kościół przeszedł pod władanie ewngelików.</p>
+                                <span class="vertical-timeline-element-date">1554-1627</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Nowy kościół</h4>
+                                <p>Rozpoczęcie budowy nowego kościoła w stylu renesansowym z inicjatywy Macieja Bilicera.</p>
+                                <span class="vertical-timeline-element-date">1612</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Pożar</h4>
+                                <p>W wyniku pożaru spłonęły wieża, organy i dzwony.</p>
+                                <span class="vertical-timeline-element-date">1627</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Odbudowa</h4>
+                                <p>Oddanie do użytku odbudowaną świątynię.</p>
+                                <span class="vertical-timeline-element-date">1638</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Poświęcenie kościoła</h4>
+                                <p>Dokonano poświęcenia kościoła pod wezwaniem Wniebowzięcia NMP i św. Michała Archanioła.</p>
+                                <span class="vertical-timeline-element-date">1666</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Rozbudowa</h4>
+                                <p>W 1691 roku powstaje kaplica Weidingerów (dzisiejsza kaplica Miłosierdzia Bożego). W 1722 roku kościół posiadał już 6 ołtarzy bocznych: Zbawiciela, św. Sebastiana, św. Krzyża, św. Henryka i św. Józefa.</p>
+                                <span class="vertical-timeline-element-date">1691, 1722</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Nowa świątynia</h4>
+                                <p>W latach 1730-1738 powstaje obecna świątynia, budowana w stylu barokowym. Jej głównym architektem jest Jan Innocenty Topper. Całość wzorowana jest na kościele św. Mikołaja w Pradze. W 1735 roku na budowie wybucha pożar, który niszczy niemal ukończoną budowlę, w tym freski Feliksa Antona Schefflera. Ostatecznie w 1738 roku kościół zostaje ukończony i oddany pod opiekę św. Michałowi. 2. lipca 1752 roku poświęcenia kościoła dokonuje biskup wrocławski Philip Gothard von Schaffgotsch.</p>
+                                <span class="vertical-timeline-element-date">1730-1752</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Kolejne problemy</h4>
+                                <p>W wyniku działań wojennych na Śląsku, kościół ulega uszkodzeniu z rąk wojsk austriackich.</p>
+                                <span class="vertical-timeline-element-date">1779</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Remonty</h4>
+                                <p>W 1803 roku nadbudowano wieżę, w 1860 roku kościół zyskał nowy dach z blachy, w 1841 odnowiono wnętrze świątyni, a w 1898 w prezbiterium umieszczono witraże ze scenami ze Starego Testamentu.</p>
+                                <span class="vertical-timeline-element-date">XIX wiek</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Czas wojen</h4>
+                                <p>W 1917 roku utracono dzwony na potrzeby wojenne. Nowe uzyskano w 1929. 23.04.1945 na północny przedsionek kościoła spadła bomba lotnicza, przez co zniszczeniu uległo boczne wejście.</p>
+                                <span class="vertical-timeline-element-date">1917-1945</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Dominikanie</h4>
+                                <p>W 1946 parafię przejmują dominikanie. W wyniku nasilonej ateizacji zostają jednak wyrzuceni już w 1954 roku. Powracają trzy lata później. W latach siedemdziesiątych przeprowadzają generalny remont świątyni wewnątrz i na zewnątrz. W 1999 roku dominikanie opuszczają Prudnik, a parafię przekazują księżom diecezjalnym.</p>
+                                <span class="vertical-timeline-element-date">1946-1999</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="vertical-timeline-item vertical-timeline-element">
+                        <div>
+                            <span class="vertical-timeline-element-icon"><i class="fas fa-dot-circle"></i></span>
+                            <div class="vertical-timeline-element-content">
+                                <h4 class="timeline-title">Współcześnie</h4>
+                                <p>Od 2008 roku przeprowadzane w kościele przeprowadzane są mniejsze remonty. Wymieniono okna na galerii kościoła, posadzki wokół świątyni, odnowiono elewację, drzwi, meble w zakrystii, obrazy, świeczniki, figury, rzeźby i snycerki.</p>
+                                <span class="vertical-timeline-element-date">XXI wiek</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Worship -->
+        <section class="p-worship" id="worship">
+            <div class="container">
+                <h1>Kult</h1>
+                <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Święty Michał Archanioł</h3>
+                          <p class="card-text">Patron obecnego kościoła. Odpust parafialny przypada w niedzielę poprzedzającą lub następującą po 29. września.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <h3 class="card-title">Wniebowzięcie Najświętszej Maryi Panny</h3>
+                          <p class="card-text">Wezwanie kościoła do 1738 roku. Obecnie nie świętuje się odpustu w tym dniu.</p>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="p-gallery" id="gallery">
+            <div class="container">
+                <h1>Galeria</h1>
+                <div class="row g-0">
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/1.jpg" 
+                                    data-caption="<h4>Ambona</h4><p>mbona - ok. 1740r. ozdobiona jest drewnianymi rzeźbami przedstawiającymi alegorycznie główne funkcje Kościoła. Na balustradzie trzy sceny nauczającego Chrystusa z łodzi, w świątyni, na górze. Baldachim przyozdobiony trzema kartuszami symbolizującymi potrójny urząd Kościoła: pasterski (pasterz z trzodą), kapłański (świątynia w skale) i prorocki (łódź na wzburzonych falach z gołębicą). Pomiędzy kartuszami umieszczono aniołki z symbolicznymi przedmiotami księgą, kotwicą i krzyżem (wiara, nadzieja, miłość). Ukoronowaniem całości jest postać kobieca z kielichem – symbol Oblubienicy Chrystusa – Kościoła.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/1_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/2.jpg" 
+                                    data-caption="<h4>Chrzcielnica</h4><p>Chrzcielnica – stoi poniżej pomnika św. Jana Nepomucena. Wykonana została w XIXw. Z szarego marmuru. Pokrywa chrzcielnicy jest wcześniejsza późnobarokowa i przedstawia Chrzest Pana Jezusa w Jordanie. </p>">
+                                    <img class="img-fluid" src="img/places/prudnik/2_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/3.jpg" 
+                                    data-caption="<h4>Figura św. Jana Nepomucena</h4><p>Figura św. Jana Nepomucena – odpowiednik ambony dla zachowania symetrii w wewnętrznym wystroju kościoła. Święty ten czczony jest jako patron zachowania tajemnicy, szczególnie tajemnicy spowiedzi. Przedstawiony jest w postawie klęczącej. Poniżej jego postaci jest relief przedstawiający strącenie Świętego z mostu praskiego do rzeki Wełtawy. W kartuszu powyżej relief przedstawiający spowiedź królowej Joanny u św. Jana Nepomucena.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/3_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/4.jpg" 
+                                    data-caption="<h4>Kaplica Bożego Miłosierdzia</h4>">
+                                    <img class="img-fluid" src="img/places/prudnik/4_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/5.jpg" 
+                                    data-caption="<h4>Kaplica dusz czyśćcowych</h4><p>Kaplica dusz czyśćcowych – obecnie Kaplica Bożego Miłosierdzia – pierwsza wzmianka o tej kaplicy pochodzi z 1691r. Pierwotnie nazywana była kaplicą Weidingerów, ponieważ została ufundowana jako kaplica-krypta przez Mariannę Weidinger. W nowym kościele z 1733r. kaplicę tę, określano jako kaplicę zmarłych, kaplicę krzyża świętego lub spowiednicę. Obecnie nazywana jest Kaplicą Bożego Miłosierdzia. Ołtarz w niej przedstawia Chrystusa na krzyżu oraz Matkę Bożą i św. Jana. Dwa aniołki trzymają symbole: trupią czaszkę (głowa Adama) i kamień (symbol grzechu ciężkiego) oraz napis „Usuń moje winy”. Po bokach ołtarza wiszą dwa stare barokowe obrazy przedstawiające dusze czyśćcowe. Po lewej – obraz kobiety w czyśćcu, umieszczony na obrazie napis głosi „Zmiłujcie się nade mną” (Hi 19,21) oraz „Niech Pan sprawi, abym osiągnęła miłosierdzie od Pana” (2 Tm 1,18). Drugi obraz przedstawia mężczyznę w czyśćcu, który z utęsknieniem patrzy w Niebo. Napis umieszczony na obrazie mówi: „Dlaczego odwracasz ode mnie oblicze i uważasz mnie za wroga” (Hi 13,24).</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/5_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/6.jpg" 
+                                    data-caption="<h4>Matka Boska Prudnicka</h4><p>Obraz Matki Bożej Prudnickiej - Czcigodny Obraz Matki Boskiej Wspomożenia Wiernych, pochodzi z 1740r. Obraz ten namalował na drzewie Szymon Schwartzer. Został on podarowany przez baronową Wengerską do kościoła kapucynów. Malowidło zostało umieszczone w bocznym ołtarzu w owalnej ramie i otoczone wieńcem złotych promieni. Wykonano je na wzór cudownego obrazu Matki Boskiej Wspomożenia znajdującego się w Zlatych Horach. W 1812r. (w niektórych źródłach podana jest data 1810r.) rozwiązano klasztor oo. kapucynów w Prudniku a kościół został przekazany protestantom, jednak po pewnym czasie obraz został przekazany do naszego kościoła. W 1898r. ufundowano nowy ołtarz, obraz Matki Boskiej przeniesiono na ołtarz Serca Jezusowego. W 1998r. po ostatniej renowacji obraz został zawieszony obok ołtarza św. Józefa.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/6_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/7.jpg" 
+                                    data-caption="<h4>Matka Boska Prudnicka</h4><p>Obraz Matki Bożej Prudnickiej - Czcigodny Obraz Matki Boskiej Wspomożenia Wiernych, pochodzi z 1740r. Obraz ten namalował na drzewie Szymon Schwartzer. Został on podarowany przez baronową Wengerską do kościoła kapucynów. Malowidło zostało umieszczone w bocznym ołtarzu w owalnej ramie i otoczone wieńcem złotych promieni. Wykonano je na wzór cudownego obrazu Matki Boskiej Wspomożenia znajdującego się w Zlatych Horach. W 1812r. (w niektórych źródłach podana jest data 1810r.) rozwiązano klasztor oo. kapucynów w Prudniku a kościół został przekazany protestantom, jednak po pewnym czasie obraz został przekazany do naszego kościoła. W 1898r. ufundowano nowy ołtarz, obraz Matki Boskiej przeniesiono na ołtarz Serca Jezusowego. W 1998r. po ostatniej renowacji obraz został zawieszony obok ołtarza św. Józefa.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/7_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/8.jpg" 
+                                    data-caption="<h4>Obraz w Kaplicy Bożego Miłosierdzia</h4>">
+                                    <img class="img-fluid" src="img/places/prudnik/8_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/9.jpg" 
+                                    data-caption="<h4>Organy</h4><p>Obecne organy na chórze są już czwartym instrumentem. Wykonane zostały na przełomie 1899/1900. W 1922r. zelektyfikowała je i odnowiła firma Berschdort z Nysy.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/9_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="200" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/10.jpg" 
+                                    data-caption="<h4>Prezbiterium i ołtarz</h4><p>Na ołtarzu głównym znajduje się naturalnej wielkości Figura Najświętszego Serca Pana Jezusa – autorstwa Thamma z Nysy</p><p>Obraz przedstawia Wniebowzięcie NMP: apostołowie otaczają pusty grób, a Maryja wznosi się do nieba w otoczeniu aniołów, prowadzona przez Michała Archanioła.W zwieńczeniu ołtarza – Trójca Przenajświętsza przyjmująca Wniebowziętą.</p><p>Ołtarz otaczają Doktorzy Kościoła – figury: św. Augustyna, św. Grzegorza Wielkiego, św. Hieronima i św. Ambrożego</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/10_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/11.jpg" 
+                                    data-caption="<h4>Ołtarz Matki Bożej</h4><p>Ołtarz Matki Bożej – wykonany w 1898r. przez braci Schiller z Ząbkowic. Nastawa ołtarzowa ma elementy podobne do portalu z napisem „Salve Regina”. W centralnym miejscu umieszczona jest tronująca Królowa Nieba z Dzieciątkiem, która podaje św. Dominikowi i św. Katarzynie ze Sieny różańce. Po bokach ołtarza stoją św. Teresa od Dzieciątka Jezus i św. Piotr Kanizjusz – kanonizowani w 1925r.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/11_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/12.jpg" 
+                                    data-caption="<h4>Ołtarz Męki Pańskiej</h4><p>Ołtarz Męki Pańskiej – ołtarzowy obraz jest najstarszym w naszym kościele, pochodzi z 1651r. i przedstawia Chrystusa w więzieniu. W górnym rogu obrazu namalowana jest postać jest autoportretem malarza, który ten obraz wykonał obraz umieszczony jest napis z przemówień św. Augustyna: „Nic nie jest dla naszej duszy tak zbawienne jest rozważanie o tym, co Bóg – człowiek dla nas cierpiał”. Na murze więzienia nad głową Chrystusa zapisane są słowa: „A światłość w ciemnościach świeci”. Na ołtarzu pod barokowym baldachimem z 1913r.,jest figura Matki Boskiej Bolesnej „Pieta” wykonana w 1889r. Z tego samego roku pochodzą figury dwóch aniołów. Pod ołtarzem znajduje się grobowiec jego fundatora ks. Frozjusza (+1651) oraz jego następcy Tomasza Heinilta (+1661), dzisiaj nakryty nową posadzką. </p>">
+                                    <img class="img-fluid" src="img/places/prudnik/12_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/13.jpg" 
+                                    data-caption="<h4>Ołtarz Serca Jezusowego</h4><p>Ołtarz Serca Jezusowego – pierwotnie był to ołtarz Zbawiciela z obrazem Jezusa w Ogrójcu (obraz zaginął). Obecny główny obraz przedstawia objawienie się św. Małgorzacie Marii Alacoque Jezusa wskazującego na swe serce. Obraz wykonał artysta malarz Jul. M. Heinisch w 1898r. i ma on być kopią obrazu z głównego ołtarza kaplicy klasztoru Paray le Monial koło Paryża. Powyżej obrazu głównego znajduje się obraz Chrystusowej twarzy wg chusty Weroniki wykonany na wzór obrazu czczonego od 1292r. u św. Piotra w Rzymie. Obraz znajdujący się w naszym kościele pochodzi z XVIIIw. Aniołki trzymające w rękach narzędzia męki są jeszcze z dawnego obrazu. Obok głównego obrazu stoją dwie figury w rokokowych szatach, przedstawiające święte pokutnice: Marię Magdalenę z czaszką w ręku i Małgorzatę z Kortony z koroną cierniową (jako symbol Męki Pańskiej). Ołtarz wraz z figurami, ornamentami i głównym obrazem pochodzi z 1740r.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/13_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/15.jpg" 
+                                    data-caption="<h4>Ołtarz św. Barbary</h4><p>Ołtarz św. Barbary – Obraz ten nie przetrwał nie zmieniony aż do naszych czasów. Pierwotny obraz św. Barbary pochodził z 1740r, dzisiejszy jest w stylu gotyzującym nazareńczyków, namalowany przez Ferdynanda Wintera w 1875r. Malowidło ponad głównym obrazem przedstawiające św. Alojzego Gonzagę, wykonane zostało przez Juliusza M. Hainischa również w 1875r. Po bokach głównego obrazu znajdują się dwie barokowe figury przedstawiające św. Jadwigę Śląską z modelem Kościoła oraz św. Apolonię (aż do 1929r. trzymała ona swój atrybut – kleszcze); jest bowiem patronką dentystów i ukojenia w bólach zębowych. </p>">
+                                    <img class="img-fluid" src="img/places/prudnik/15_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/16.jpg" 
+                                    data-caption="<h4>Ołtarz św. Józefa</h4><p>Ołtarz św. Józefa – dawniejszy ołtarz przeniesiony został w latach 1899/1900 do kaplicy w Jasionie i tam przerobiony. Obecny ołtarz odpowiada co do formy ołtarzowi Matki Bożej, gdyż był zrobiony przez tego samego wykonawcę. Obraz w romantyczno-idealistycznej formie namalował w 1876r. Ferdynand Winter z Wrocławia. Z 1906r. z pobożnej fundacji pochodzą dwie figury umieszczone po bokach głównego obrazu - postacie św. Franciszka z Asyżu i św. Antoniego z Padwy.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/16_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/17.jpg" 
+                                    data-caption="<h4>Ołtarz św. Jacka</h4><p>Ołtarz św. Jacka – (dawniej ołtarz św. Jana Nepomucena). Pierwotny obraz z tego ołtarza znajduje się na ścianie w zakrystii. Obecny ołtarz Patrona Diecezji Opolskiej oraz Zakonu św. Dominika w Polsce pochodzi z 1951r. Po obydwu stronach obrazu stoją figury świętych Apostołów Piotra i Pawła. W górnej nastawie ołtarzowej jest umieszczony obraz św. Bernarda ze Sieny – krzewiciela kultu Imienia Jezus w XVw wiecznej Europie. </p>">
+                                    <img class="img-fluid" src="img/places/prudnik/17_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/18.jpg" 
+                                    data-caption="<h4>Ołtarz św. Wacława</h4><p>Ołtarz św. Wacława – zachowany w niezmiennej formie od momentu swego powstania (pomiędzy rokiem 1738 i 1740). Główny obraz przedstawia św. Wacława, księcia czeskiego i króla w chwale. Św. ukazany jest w pełnym stroju rycerskim i koronie z orłem czeskim na tarczy. Anioł niesie mu wieniec zwycięstwa. Po lewej stronie obrazu umieszczona jest figura, która przedstawia jeszcze raz św. Wacława Patrona Czech lecz już w stroju książęcym (płaszcz purpurowy) z mieczem w prawej ręce. Po prawej stronie obrazu jest figura, która przedstawia św. Leopolda – Patrona Austrii. Ten margrabia austriacki w szatach książęcych trzyma model kościoła w ręku (był fundatorem wielu kościołów i klasztorów). Ponad głównym obrazem św. Wacława umieszczony jest obraz św. Antoniego z Padwy podającego komunię choremu. Rzeźbione antypedium z monogramem św. Wacława pochodzi z lat 80- tych XIXw.</p>">
+                                    <img class="img-fluid" src="img/places/prudnik/18_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" data-aos="fade-up" data-aos-delay="100" data-aos-once="true">
+                        <div class="p-slide">
+                            <figure>
+                                <a data-fancybox="sk" href="img/places/prudnik/19.jpg" 
+                                    data-caption="<h4>Stacje Drogi Krzyżowej</h4><p>Stacje Drogi Krzyżowej – pierwsze obrazy Drogi Krzyżowej w naszym kościele poświęcono w 1739r. W 1875r. zastąpiono je nowymi obrazami wykonanymi przez Ferdynanda Wintera z Wrocławia na wzór znanych w Austrii, Czechach i na Śląsku obrazów wiedeńskiego malarza okresu romantyzmu Józefa Fuhricha. Fundatorem obrazów w naszym kościele był Józef Soffner. </p>">
+                                    <img class="img-fluid" src="img/places/prudnik/19_thumb.jpg">
+                                </a>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connected with place -->
+        <section class="p-connected-with-place" id="connected">
+            <div class="container">
+                <h1>Związani z tym miejscem</h1>
+                <div class="row">
+                    <div class="col-lg-4"><center><img src="img/people/jan_gora_thumb.jpg"></center></div>
+                    <div class="col-lg-8">
+                        <h4>Jan Góra OP</h4>
+                        <p><b>ur. 8 lutego 1948 w Prudniku, zm. 21 grudnia 2015 w Poznaniu</b><br>Polski dominikanin, prezbiter, doktor teologii, duszpasterz akademicki i działacz społeczny. Organizator Ogólnopolskiego Spotkania Młodzieży „Lednica 2000” na Polach Lednickich i Dni Prymasowskich w Prudniku. Animator ośrodka duszpasterstwa akademickiego „Respublica Dominicana” w Jamnej.</p>
+                        <a href="#" class="btn btn-secondary btn-sm">Czytaj więcej</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4"><center><img src="img/people/zygmunt_nabzdyk_thumb.jpg"></center></div>
+                    <div class="col-lg-8">
+                        <h4>Ks. dr Zygmunt Nabzdyk </h4>
+                        <p><b>ur. 10 sierpnia 1930 w Bielszowicach, zm. 22 listopada 2020 w Opolu</b><br>Wieloletni wykładowca, prefekt Wyższego Seminarium Duchownego i ojciec duchowny. Od 1945 r. mieszkaniec Prudnika. Społecznik. Ubogacał ludzi i im pomagał. Zmarł w 2020r. Pochowany na prudnickim cmentarzu.</p>
+                        <a href="#" class="btn btn-secondary btn-sm">Czytaj więcej</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4"><center><img src="img/people/Felix_Anton_Scheffler_thumb.jpg"></center></div>
+                    <div class="col-lg-8">
+                        <h4>Felix Anton Scheffler</h4>
+                        <p><b>ur. 29 sierpnia 1701 w Monachium, zm. 10 stycznia 1760 w Pradze</b><br>Niemiecki malarz działający głównie na Dolnym Śląsku, nadworny malarz biskupa Philippa von Sinzendorfa. Pochodził z Bawarii. Pierwsze nauki pobierał u swojego ojca Johanna Wolfganga Schefflera. W latach 1719–1722 kształcił się u Cosmasa Damiana Asama. Jego styl reprezentuje późny barok przechodzący niekiedy w rokoko.</p>
+                        <a href="#" class="btn btn-secondary btn-sm">Czytaj więcej</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4"><center><img src="img/people/anon_thumb.png"></center></div>
+                    <div class="col-lg-8">
+                        <h4>Johann Innozenz Töpper</h4>
+                        <p><b>ur. 1699 w Dzikowcu, zm. 1778 w Prudniku</b><br>Niemiecki architekt doby baroku działający na terenie Śląska. Był uczniem Martina Frantza. Jego dzieła charakteryzują się prostotą budowli z zewnątrz i bogactwem dekoracji wewnątrz.</p>
+                        <a href="#" class="btn btn-secondary btn-sm">Czytaj więcej</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interesting facts -->
+        <section class="p-interesting-facts" id="interesting-facts">
+            <div class="container">
+                <h1>Ciekawostki</h1>
+                <center>
+                    <p>
+                        W głównej krypcie kościoła pochowani są kapucyni.
+                    </p>
+                    <p>
+                        Oprócz 3 wejść do kościoła, jest jeszcze kilka mniejszych, np. od strony plebanii.
+                    </p>
+                    <p>
+                        Naprzeciwko kościoła stoi pomnik Jana Pawła II i kardynała Stefana Wyszyńskiego, którego Jan Paweł II podnosi go z kolan. Autorem rzeźby z brązu i marmuru jest Marian Molenda.
+                    </p>
+                    <p>
+                        11.02.2018r. na ścianie kościoła dokonano odsłonięcia tablicy upamiętniającej Jana Górę.
+                    </p>
+                    <p>
+                        Kościół znajduje się na trasie projektu „Turystyka sakralna pogranicza polsko-czeskiego”.
+                    </p>
+                    <p>
+                        Ostatni dominikański proboszcz parafii – o. Stanisław Gołąb – zmarł 26 października 2019.
+                    </p>
+                </center>
+            </div>
+        </section>
+
+        <!-- Routes -->
+        <section class="p-routes" id="routes">
+            <div class="container">
+                <h1>Szlaki</h1>
+                <div class="card">
+                    <div class="card-body">
+                        <a href="#">
+                            <div class="row">
+                                <div class="col-xl-9 align-self-center">
+                                    <h3 class="card-title">Śladami opolskich dominikanów&nbsp;</h3>
+                                    <p class="card-text">Brzeg - Nysa - Prudnik - Kamień Śląski - Opole</p>
+                                </div>
+                                <div class="col-xl-2 align-self-center">
+                                    <div class="vehicles">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <i class="fas fa-bicycle"></i><br>
+                                                <small>120 km</small><br>
+                                                <small>2 dni</small>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <i class="fas fa-car"></i><br>
+                                                <small>180 km</small><br>
+                                                <small>1 dzień</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-1 align-self-center">
+                                    <i class="fas fa-arrow-circle-right"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                  </div>
+            </div>
+        </section>
+
+        <!-- Bibliography -->
+        <section class="p-bibliography" id="bibliography">
+            <div class="container">
+                <h1>Bibliografia</h1>
+                <ul>
+                    <li>„725 lat miasta i parafii w Prudniku” - album</li>
+                    <li>"Ojciec Jan Góra – Syn Ziemi Prudnickiej", broszura, Wydanie I – 2018, ISBN: 978-83-65916-36-5.</li>
+                    <li>Andrzej Dereń: Prudnik i okolice: prudnicka granica cudów. Prudnik: Spółka Wydawnicza Aneks, 2009, s. 30. ISBN 978-83-917915-3-0.</li>
+                    <li>„Myślimy o Bogu” – Informator – Przewodnik po naszym kościele. O życiu i działalności Parafii OO. Dominikanów. Prudnik, Wydanie Specjalne 1990 nr 2 (15) – do użytku wewnętrznego</li>
+                    <li> „Prudnik i okolice – Przewodnik Turystyczny”, Spółka Wydawnicza Aneks, Prudnik 2017, str.30-32.</li>
+                    <li><a href="http://www.silesiatourism.com/www/pl/zakres-zabytki-koscielne/kosciol-sw-michala-archaniola-prudnik/">http://www.silesiatourism.com/www/pl/zakres-zabytki-koscielne/kosciol-sw-michala-archaniola-prudnik/</a></li>
+                    <li><a href="http://www.promocja.prudnik.pl/promocja-galerie-42-niecodziennik_prudnik_mniej_znany....html">http://www.promocja.prudnik.pl/promocja-galerie-42-niecodziennik_prudnik_mniej_znany....html, str. 83-96</a></li>
+                    <li><a href="http://www.michalprudnik.com.pl/?p=main&what=16">http://www.michalprudnik.com.pl/?p=main&what=16</a></li>
+                    <li><a href="http://4tour.pl/prudnik/ko%C5%9Bci%C3%B3%C5%82-%C5%9Bw-micha%C5%82a-w-prudniku">http://4tour.pl/prudnik/ko%C5%9Bci%C3%B3%C5%82-%C5%9Bw-micha%C5%82a-w-prudniku</a></li>
+                    <li><a href="http://promocja.prudnik.pl/promocja-news-90-uroczyste_odsloniecie_tablicy_sp._ojca_jana_gory.html">http://promocja.prudnik.pl/promocja-news-90-uroczyste_odsloniecie_tablicy_sp._ojca_jana_gory.html</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Comments -->
+        <section class="p-comments" id="comments">
+            <div class="container">
+                <h1>Komentarze</h1>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7">
+						<h1 class="footer-logo">
+							<a href="https://swieccy.dominikanie.pl"><img src="img/swieccy_log.png"></a>
+						</h1>
+						<p>© 2021 - Świeccy Zakonu Kaznodziejskiego Prowincji Polskiej</p>
+						<div class="footer-links">
+							<a href="https://facebook.com/dominikanie"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/Dominikaniepl"><i class="fab fa-twitter"></i></a>
+							<a href="https://pl.pinterest.com/dominikanie/"><i class="fab fa-pinterest"></i></a>
+							<a href="https://www.instagram.com/dominikanie/"><i class="fab fa-instagram"></i></a>
+							<a href="https://sklep.dominikanie.pl/"><i class="fas fa-shopping-cart"></i></a>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="footer-links">
+                            <br>
+							<p>Znasz ciekawostki związane z Polskimi Dominikanami?</p>
+							<button type="button" class="contact-btn" data-bs-toggle="modal" data-bs-target="#contact"><i class="fas fa-pen"></i> Napisz do nas!</button>
+						</div>
+					</div>
+					<div id="contact" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h2 class="modal-title">Napisz do nas!</h2>
+								</div>
+								<form method="post">
+									<div class="modal-body">
+										<div class="form-floating mb-3">
+										  <input type="text" class="form-control" id="name">
+										  <label for="name">Imię i nazwisko</label>
+										</div>
+										<div class="form-floating mb-3">
+										  <input type="email" class="form-control" id="email">
+										  <label for="email">Adres e-mail</label>
+										</div>
+										<div class="form-floating mb-3">
+											<textarea id="content" name="content" class="form-control" style="height: 100px;"></textarea>
+											<label for="content">Treść wiadomości</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-bs-dismiss="modal">Zamknij</button>
+										<button type="button" class="btn btn-primary">Wyślij</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+        <!-- Scripts -->
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.fancybox.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdgZ4PBBZt15GfXf3IVoisPS20Wf1aGnY&map_ids=31bd4f47a80b6c80&callback=initMap&libraries=&v=weekly" async></script>
+    </body>
+</html>
