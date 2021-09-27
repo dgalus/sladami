@@ -150,6 +150,12 @@ footer {
     }
 }
 
+@media (max-width: 991px) {
+    .logo-auto {
+        display: none;
+    }
+}
+
 @media (min-width: 768px) {
 	.hero .search {
 		text-align: center;
@@ -859,6 +865,20 @@ a.place-arrow-back:hover {
     position: absolute;
 }
 
+@media (max-width: 991px) {
+    .place-hero-h {
+        clip-path: polygon(0 0%, 100% 0%, 100% 90%, 0% 90%);
+        background-color: rgba(255, 255, 255, 0.7);
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+
+    .place-hero-h .hero-content {
+        text-align: center;
+    }
+}
+
 .place-hero-a {
     display: inline-block;
     margin-top: 10vh;
@@ -919,6 +939,17 @@ a.place-arrow-back:hover {
     text-decoration-thickness: 3px;
     text-align: center;
     font-size: 36px;
+}
+
+@media (max-width: 991px) {
+    .p-connected-with-place {
+        text-align: center;
+    }
+
+    .p-connected-with-place h4 {
+        text-align: center;
+        padding: 20px 0;
+    }
 }
 
 .p-about p {
@@ -1147,6 +1178,12 @@ a.place-arrow-back:hover {
     vertical-align: middle;
 }
 
+@media (max-width: 991px) {
+    .route-hero {
+        text-align: center;
+    }
+}
+
 .r-information {
     padding: 80px 0;
     display: block;
@@ -1170,65 +1207,103 @@ a.place-arrow-back:hover {
     height: 100%;
 }
 
-.r-info-places {
-    margin: auto;
-    margin-bottom: 30px;
-    background: #eee;
-    min-height: 150px;
-    display: flex;
-    overflow: hidden;
-    text-align: center;
-}
+@media (max-width: 991px) {
+    .r-info-places {
+        margin: auto;
+        margin-bottom: 30px;
+        background: #eee;
+        color: #222;
+        padding: 30px;
+        text-align: center;
+    }
 
-.r-info-places a {
-    text-decoration: none;
-    position: relative;
-    display: flex;
-    flex-grow: 1;
-    margin: auto;
-    height: 100%;
-    padding-right: 0;
-    color: #666;
-}
+    .r-info-places a {
+        text-decoration: none;
+    }
 
-.r-info-places a:first-child {
-    padding-left: 10px;
-}
+    .r-info-places i {
+        font-size: 80px;
+        margin: auto;
+        color: #ccc;
+        transform: rotate(90deg);
+    }
 
-.r-info-places a:last-child {
-    padding-right: 10px;
-}
+    .r-info-places .tile {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
 
-.r-info-places i {
-    font-size: 80px;
-    margin: auto;
-    color: #ccc;
-}
+    .r-info-places .tile-title {
+        color: #222;
+        text-decoration: none;
+        font-size: 28px;
+        font-weight: 600;
+        line-height: normal;
+    }
 
-.r-info-places .tile {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-}
-
-.r-info-places .tile-title {
-    color: #222;
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 600;
-    line-height: normal;
-}
-
-.r-info-places .tile-desc {
-    color: #222;
-    font-size: 15px;
-}
-
-@media all and (max-width: 710px) {
     .r-info-places .tile-desc {
-        display: none;
+        color: #222;
+        font-size: 17px;
     }
 }
+
+@media (min-width: 992px) {
+    .r-info-places {
+        margin: auto;
+        margin-bottom: 30px;
+        background: #eee;
+        min-height: 150px;
+        display: flex;
+        overflow: hidden;
+        text-align: center;
+    }
+    
+    .r-info-places a {
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        flex-grow: 1;
+        margin: auto;
+        height: 100%;
+        padding-right: 0;
+        color: #666;
+    }
+    
+    .r-info-places a:first-child {
+        padding-left: 10px;
+    }
+    
+    .r-info-places a:last-child {
+        padding-right: 10px;
+    }
+    
+    .r-info-places i {
+        font-size: 80px;
+        margin: auto;
+        color: #ccc;
+    }
+    
+    .r-info-places .tile {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
+    
+    .r-info-places .tile-title {
+        color: #222;
+        text-decoration: none;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: normal;
+    }
+    
+    .r-info-places .tile-desc {
+        color: #222;
+        font-size: 15px;
+    }
+}
+
 
 .r-information .card {
     background-color: #2d2d2d;
@@ -1252,6 +1327,13 @@ a.place-arrow-back:hover {
 .r-variants {
     margin-bottom: 50px;
 }
+
+@media (max-width: 991px) {
+    .r-variants .card {
+        margin-bottom: 30px;
+    }
+}
+
 
 .r-place-1 {
     background-color: #f6f6f6;
@@ -1297,9 +1379,14 @@ a.place-arrow-back:hover {
     margin-top: 30px;
 }
 
-
 .r-a {
     margin-top: 30px;
+}
+
+@media (max-width: 991px) {
+    .r-a {
+        margin-bottom: 30px;
+    }
 }
 
 .r-a a{
@@ -1336,6 +1423,8 @@ a.place-arrow-back:hover {
     text-decoration: none;
 }
 
-.r-infobar .bright {
-    border-right: 1px solid #777;
+@media (min-width: 992px) {
+    .r-infobar .vert-line {
+        border-right: 1px solid #777;
+    }
 }
