@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="" />
+        <meta property="og:title" content=""/>
+		<meta property="og:image" content=""/>
+		<meta property="og:url" content=""/>
+		<meta property="og:site_name" content=""/>
+		<meta property="og:description" content=""/>
+		<meta name="twitter:title" content="" />
+		<meta name="twitter:image" content="" />
+		<meta name="twitter:url" content="" />
+		<meta name="twitter:card" content="" />
+
+        <title>Śladami Polskich Dominikanów</title>
+
+        <!-- Stylesheets -->
+        <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
+        <link href="css/jquery.fancybox.css" rel="stylesheet">
+        <link href="css/aos.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+
+        <!-- Scripts -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+		<script>
+			  let map;
+
+			  function initMap() {
+				map = new google.maps.Map(document.getElementById("gm"), {
+				  zoom: 10,
+				  center: { lat: 50.6, lng: 17.63 },
+				  mapTypeControl: false,
+				  mapTypeId: "terrain"
+				});
+				const iconBase =
+				  "img/marker/";
+				const icons = {
+				  orange: {
+					icon: iconBase + "orange.png",
+				  },
+				  blue: {
+					icon: iconBase + "blue.png",
+				  },
+				  black: {
+					icon: iconBase + "black.png",
+				  },
+				  gray: {
+					icon: iconBase + "gray.png",
+				  },
+				};
+				const features = [
+				  {
+					position: new google.maps.LatLng(50.863308, 17.4651597),
+					type: "black",
+					desc: '<h6 style="text-align: center">Kościół w miejscu dawnego kościoła dominikańskiego w Brzegu</h6>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.4787562, 17.3194621),
+					type: "blue",
+					desc: '<h6 style="text-align: center">Podominikański Kościół św. Dominika w Nysie</h6>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.3202341, 17.5796),
+					type: "blue",
+					desc: '<h6 style="text-align: center">Podominikański Kościół św. Michała Archanioła w Prudniku</h6>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.3204934, 17.5797),
+					type: "gray",
+					desc: '<h6 style="text-align: center">Fraternia dominikańska św. Tomasza z Akwinu i św. Piusa V w Prudniku</h6>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.535909, 18.075955),
+					type: "orange",
+					desc: '<h6 style="text-align: center">Sanktuarium św. Jacka w Kamieniu Śląskim</h6>'
+				  },
+				  {
+					position: new google.maps.LatLng(50.6690591, 17.9232384),
+					type: "blue",
+					desc: '<h6 style="text-align: center">Podominikański Kościół Matki Boskiej Bolesnej i św. Wojciecha w Opolu</h6>'
+				  },
+				];
+
+				// Create markers.
+				for (let i = 0; i < features.length; i++) {
+				  const marker = new google.maps.Marker({
+					position: features[i].position,
+					icon: icons[features[i].type].icon,
+					map: map,
+				  });
+				  const infoWindow = new google.maps.InfoWindow({
+					content: features[i].desc
+				  });
+				  marker.addListener("click", () => {
+					infoWindow.open(map, marker);
+				  });
+				}
+			  }
+		</script>
+    </head>
+    <body>
+        <!-- Menu -->
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <div class="container">
+                    <a href="index.html" class="menu-item2" onclick="closeNav()">Strona główna</a>
+                    <a href="#info" class="menu-item2" onclick="closeNav()">Przebieg trasy</a>
+                    <a href="#gm" class="menu-item2" onclick="closeNav()">Mapa</a>
+                    <a href="#first" class="menu-item2" onclick="closeNav()">Miejsca</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar fixed-top bg-dark">
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="row">
+                        <div class="col logo-main">
+                            <a href="index.html" class="place-arrow-back">
+                                <i class="fas fa-arrow-left"></i>
+                            </a>&nbsp;&nbsp;
+                            <a href="#"><img src="img/logo-white.png" alt="Logo"></a>
+                        </div>
+                        <div class="col nav-lang-menu">
+                            <!--<div class="lang">
+                                <a href="/en/"><img src="img/flags/uk64.png"/></a>
+                                <a href="/ru/"><img src="img/flags/russia64.png"/></a>
+                            </div>-->
+                            <span onclick="openNav()"><i class="fas fa-bars"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+		<!-- Hero -->
+		<header>
+			<section class="route-hero" id="home" style="background: url('img/places/raw/prudnik-gs.jpg') no-repeat center center; background-size: cover;">
+				<div class="container">
+					<div class="row hero-content " data-aos="fade-up" data-aos-once="true" data-aos-easing="linear">
+						<h2><span class="r-subtitle">Trasa</span></h2>
+						<h1><span class="r-title">Wokół opolszczyzny</span></h1>
+						<div class="route-hero-a">
+							<a href="#info"><i class="fas fa-arrow-circle-down"></i>&nbsp;&nbsp;<span>Zobacz więcej</span></a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</header>
+
+		<section class="r-information" id="info">
+            <div class="container">
+                <h1>Przebieg trasy</h1>
+				<div class="r-info-places">
+					<a href="#">
+						<div class="tile">
+							<span class="tile-title">Brzeg</span>
+							<span class="tile-desc">Historyczna lokalizacja kościoła św. Krzyża</span>
+						</div>
+					</a>
+					<i class="fas fa-chevron-right"></i>
+					<a href="#">
+						<div class="tile">
+							<span class="tile-title">Nysa</span>
+							<span class="tile-desc">Podominikański kościół i klasztor św. Dominika</span>
+						</div>
+					</a>
+					<i class="fas fa-chevron-right"></i>
+					<a href="#">
+						<div class="tile">
+							<span class="tile-title">Prudnik</span>
+							<span class="tile-desc">Podominikański kościół św. Michała Archanioła</span>
+						</div>
+					</a>
+					<i class="fas fa-chevron-right"></i>
+					<a href="#">
+						<div class="tile">
+							<span class="tile-title">Kamień Śląski</span>
+							<span class="tile-desc">Sanktuarium w miejscu narodzin św. Jacka</span>
+						</div>
+					</a>
+					<i class="fas fa-chevron-right"></i>
+					<a href="#">
+						<div class="tile">
+							<span class="tile-title">Opole</span>
+							<span class="tile-desc">Podominikański kościół MB Bolesnej i św. Wojciecha</span>
+						</div>
+					</a>
+				</div>
+
+				<div class="r-variants">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-body">
+									<div class="vehicles">
+										<h2>Wariant rowerowy</h2>
+										<div class="row">
+											<div class="col">
+												<i class="fas fa-bicycle"></i><br>
+												<small>148 km</small><br>
+												<small>1-2 dni</small>
+											</div>
+											<div class="col vert-align">
+												<a class="contact-btn" href="https://goo.gl/maps/xaHDzpnHvmQYyQVv9" target="_blank">Pokaż mapę</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="card">
+								<div class="card-body">
+									<div class="vehicles">
+										<h2>Wariant samochodowy</h2>
+										<div class="row">
+											<div class="col">
+												<i class="fas fa-car"></i><br>
+												<small>159 km</small><br>
+												<small>1 dzień</small>
+											</div>
+											<div class="col vert-align">
+												<a class="contact-btn" href="https://goo.gl/maps/fubFHBmXvo8BHx5z9" target="_blank">Pokaż mapę</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col"><center><img src="img/marker/red.png"> - istniejące klasztory męskie</center></div>
+					<div class="col"><center><img src="img/marker/green.png"> - istniejące klasztory żeńskie</center></div>
+					<div class="col"><center><img src="img/marker/blue.png"> - istniejące kościoły podominikańskie</center></div>
+				</div>
+				<div class="row">
+					<div class="col"><center><img src="img/marker/orange.png"> - miejsca związane z historią dominikanów</center></div>
+					<div class="col"><center><img src="img/marker/gray.png"> - fraternie dominikańskie</center></div>
+					<div class="col"><center><img src="img/marker/black.png"> - nieistniejące kościoły i klasztory</center></div>
+				</div>
+				<div id="gm"></div>
+			</div>
+        </section>
+
+		<section class="r-place-1" id="first">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 img">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/f/f7/SM_Brzeg_Ko%C5%9Bci%C3%B3%C5%82Podwy%C5%BCszeniaKrzy%C5%BCa%C5%9Awi%C4%99tego_%285%29_ID_609748.jpg" />
+					</div>
+					<div class="col-6 desc">
+						<h2>Brzeg</h2>
+						<h5>Kościół w miejscu dawnego kościoła i klasztoru dominikańskiego</h5>
+						<p>
+							Tu będzie krótki opis miejsca...
+						</p>
+						<div class="r-a">
+							<a href="place2.html"><span>Czytaj więcej&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-infobar">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 bright">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-bicycle"></i></div>
+							<div class="p-4 vert-align">
+								<small>50 km</small><br>
+								<small>3 godz.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/kTjoZd4phY2BQRnz6"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-car"></i></div>
+							<div class="p-4 vert-align">
+								<small>55,4 km</small><br>
+								<small>50 min.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/RvLrvSeDbkE1mJGv6"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-place-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 desc">
+						<h2>Nysa</h2>
+						<h5>Podominikański kościół św. Dominika</h5>
+						<p>
+							Tu będzie krótki opis miejsca...
+						</p>
+						<div class="r-a">
+							<a href="place2.html"><span>Czytaj więcej&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i></span></a>
+						</div>
+					</div>
+					<div class="col-6 img">
+						<img src="http://images.polskaniezwykla.pl/user/original/322631.jpg" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-infobar">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 bright">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-bicycle"></i></div>
+							<div class="p-4 vert-align">
+								<small>30,6 km</small><br>
+								<small>2 godz.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/2gqUsp14v3atTKfb7"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-car"></i></div>
+							<div class="p-4 vert-align">
+								<small>29 km</small><br>
+								<small>40 min.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/z7SaAcDDtAw9DVQe9"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-place-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 img">
+						<img src="img/places/prudnik.jpg" />
+					</div>
+					<div class="col-6 desc">
+						<h2>Prudnik</h2>
+						<h5>Podominikański kościół św. Michała Archanioła</h5>
+						<p>
+							Tu będzie krótki opis miejsca...
+						</p>
+						<div class="r-a">
+							<a href="place2.html"><span>Czytaj więcej&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-infobar">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 bright">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-bicycle"></i></div>
+							<div class="p-4 vert-align">
+								<small>47,2 km</small><br>
+								<small>3 godz.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/fc4fjrJtdRsqhui5A"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-car"></i></div>
+							<div class="p-4 vert-align">
+								<small>52,4 km</small><br>
+								<small>1 godz.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/xoGAPxp35YxeugBW9"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-place-2">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 desc">
+						<h2>Kamień Śląski</h2>
+						<h5>Sanktuarium w miejscu urodzenia św. Jacka, bł. Czesława i bł. Bronisławy</h5>
+						<p>
+							Tu będzie krótki opis miejsca...
+						</p>
+						<div class="r-a">
+							<a href="place2.html"><span>Czytaj więcej&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i></span></a>
+						</div>
+					</div>
+					<div class="col-6 img">
+						<img src="img/places/kamien_sl.jpg" />
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-infobar">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 bright">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-bicycle"></i></div>
+							<div class="p-4 vert-align">
+								<small>20,7 km</small><br>
+								<small>1 godz. 15 min.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/zPkhuGwoEARopYEQ9"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="d-flex justify-content-center">
+							<div class="p-4 vert-align"><i class="fas fa-car"></i></div>
+							<div class="p-4 vert-align">
+								<small>26 km</small><br>
+								<small>35 min.</small>
+							</div>
+							<div class="p-4 vert-align">
+								<a href="https://goo.gl/maps/9BijQUebEtq4YJXx7"><span><i class="fas fa-arrow-circle-right"></i></span></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="r-place-1">
+			<div class="container">
+				<div class="row">
+					<div class="col-6 img">
+						<img src="img/places/opole.jpg" />
+					</div>
+					<div class="col-6 desc">
+						<h2>Opole</h2>
+						<h5>Podominikański kościół Matki Boskiej Bolesnej i św. Wojciecha</h5>
+						<p>
+							Tu będzie krótki opis miejsca...
+						</p>
+						<div class="r-a">
+							<a href="place2.html"><span>Czytaj więcej&nbsp;&nbsp;<i class="fas fa-arrow-circle-right"></i></span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+        <!-- Footer -->
+        <footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-7">
+						<h1 class="footer-logo">
+							<a href="https://swieccy.dominikanie.pl"><img src="img/swieccy_log.png"></a>
+						</h1>
+						<p>© 2021 - Świeccy Zakonu Kaznodziejskiego Prowincji Polskiej</p>
+						<div class="footer-links">
+							<a href="https://facebook.com/dominikanie"><i class="fab fa-facebook-f"></i></a>
+							<a href="https://twitter.com/Dominikaniepl"><i class="fab fa-twitter"></i></a>
+							<a href="https://pl.pinterest.com/dominikanie/"><i class="fab fa-pinterest"></i></a>
+							<a href="https://www.instagram.com/dominikanie/"><i class="fab fa-instagram"></i></a>
+							<a href="https://sklep.dominikanie.pl/"><i class="fas fa-shopping-cart"></i></a>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div class="footer-links">
+                            <br>
+							<p>Znasz ciekawostki związane z Polskimi Dominikanami?</p>
+							<button type="button" class="contact-btn" data-bs-toggle="modal" data-bs-target="#contact"><i class="fas fa-pen"></i> Napisz do nas!</button>
+						</div>
+					</div>
+					<div id="contact" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h2 class="modal-title">Napisz do nas!</h2>
+								</div>
+								<form method="post">
+									<div class="modal-body">
+										<div class="form-floating mb-3">
+										  <input type="text" class="form-control" id="name">
+										  <label for="name">Imię i nazwisko</label>
+										</div>
+										<div class="form-floating mb-3">
+										  <input type="email" class="form-control" id="email">
+										  <label for="email">Adres e-mail</label>
+										</div>
+										<div class="form-floating mb-3">
+											<textarea id="content" name="content" class="form-control" style="height: 100px;"></textarea>
+											<label for="content">Treść wiadomości</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-light" data-bs-dismiss="modal">Zamknij</button>
+										<button type="button" class="btn btn-primary">Wyślij</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+        <!-- Scripts -->
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="js/jquery.fancybox.js"></script>
+        <script src="js/aos.js"></script>
+        <script src="js/script.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBdgZ4PBBZt15GfXf3IVoisPS20Wf1aGnY&map_ids=31bd4f47a80b6c80&callback=initMap&libraries=&v=weekly" async></script>
+    </body>
+</html>

@@ -37,6 +37,10 @@ footer {
     font-size: 12px;
 }
 
+.vert-align {
+    margin: auto 0;
+}
+
 .btn {
 	border-radius: 2px;
 }
@@ -873,10 +877,12 @@ a.place-arrow-back:hover {
 .place-hero-a i {
     line-height: 8vh;
     color: #222;
+    font-weight: 600;
 }
 
 .place-hero-a span {
     font-size: 21px;
+    font-weight: 600;
 }
 
 .place-hero-a i {
@@ -1078,5 +1084,258 @@ a.place-arrow-back:hover {
     clear: both
 }
 
+.route-hero {
+    position: relative;
+    padding: 0 0 60px 0;
+    min-height: 800px;
+    height: 100vh;
+    background: url('../img/hero-bg.jpg') no-repeat center center rgba(6, 12, 34, 0.6);
+    color: #222;
+    width: 100%;
+    z-index: 0;
+}
+
+.route-hero .r-title {
+    font-size: 8vh;
+    background-color: rgba(250, 250, 250, 0.9);
+    color: #222;
+    padding: 0 10px;
+}
+
+.route-hero h2 {
+    margin: 40vh 0 10px 0;
+    border: 0;
+}
+
+.route-hero .r-subtitle {
+	font-size: 4vh;
+	font-weight: 100;
+    border: 0;
+    line-height: 6vh;
+    color: #222;
+    padding: 0 10px;
+    background-color: rgba(250, 250, 250, 0.8);
+}
+
+.route-hero-a {
+    display: inline-block;
+    margin-top: 10vh;
+}
+
+.route-hero-a a{
+    text-decoration: none;
+}
+
+.route-hero-a a:hover i, 
+.route-hero-a a:hover span {
+    color: #f2f2f2;
+}
+
+.route-hero-a span, 
+.route-hero-a i {
+    line-height: 8vh;
+    color: #fff;
+}
+
+.route-hero-a span {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.route-hero-a i {
+    font-size: 8vh;
+    vertical-align: middle;
+}
+
+.r-information {
+    padding: 80px 0;
+    display: block;
+}
+
+.r-information h1 {
+    font-weight: 500;
+    margin-bottom: 70px;
+    text-decoration: underline;
+    text-decoration-color: #df0400;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.r-information #gm {
+    min-height: 90vh;
+    margin-top: 30px;
+    width: 100%;
+    height: 100%;
+}
+
+.r-info-places {
+    margin: auto;
+    margin-bottom: 30px;
+    background: #eee;
+    min-height: 150px;
+    display: flex;
+    overflow: hidden;
+    text-align: center;
+}
+
+.r-info-places a {
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    margin: auto;
+    height: 100%;
+    padding-right: 0;
+    color: #666;
+}
+
+.r-info-places a:first-child {
+    padding-left: 10px;
+}
+
+.r-info-places a:last-child {
+    padding-right: 10px;
+}
+
+.r-info-places i {
+    font-size: 80px;
+    margin: auto;
+    color: #ccc;
+}
+
+.r-info-places .tile {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.r-info-places .tile-title {
+    color: #222;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.r-info-places .tile-desc {
+    color: #222;
+    font-size: 15px;
+}
+
+@media all and (max-width: 710px) {
+    .r-info-places .tile-desc {
+        display: none;
+    }
+}
+
+.r-information .card {
+    background-color: #2d2d2d;
+}
+
+.r-information .card i {
+    font-size: 50px;
+    text-align: center;
+}
+
+.r-information .vehicles {
+    color: #aaa;
+    text-align: center;
+}
+
+.r-information .vehicles h2 {
+    color: #fff;
+    border: 0;
+}
+
+.r-variants {
+    margin-bottom: 50px;
+}
+
+.r-place-1 {
+    background-color: #f6f6f6;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.r-place-2 {
+    background-color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.r-place-1 h2,
+.r-place-2 h2 {
+    border: 0;
+    text-decoration: underline;
+    text-decoration-color: #df0400;
+    text-underline-offset: 10px;
+    text-decoration-thickness: 3px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.r-place-1 h5,
+.r-place-2 h5 {
+    margin-bottom: 20px;
+}
+
+.r-place-1 .img,
+.r-place-2 .img {
+    margin: auto 0;
+}
+
+.r-place-1 img,
+.r-place-2 img {
+    width: 100%;
+}
+
+.r-place-1 .desc,
+.r-place-2 .desc {
+    margin-top: 30px;
+}
 
 
+.r-a {
+    margin-top: 30px;
+}
+
+.r-a a{
+    text-decoration: none;
+}
+
+.r-a span {
+    color: #222;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.r-a i {
+    font-size: 24px;
+    font-weight: 600;
+
+    vertical-align: middle;
+}
+
+.r-infobar {
+    background-color: #222;
+    min-height: 60px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+}
+
+.r-infobar i {
+    font-size: 50px;
+    right: 0;
+}
+
+.r-infobar a {
+    text-decoration: none;
+}
+
+.r-infobar .bright {
+    border-right: 1px solid #777;
+}
