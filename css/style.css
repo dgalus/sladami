@@ -927,7 +927,8 @@ a.place-arrow-back:hover {
     padding: 80px 0;
     display: block;
     word-break: break-word;
-    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .p-about h1,
@@ -1056,7 +1057,7 @@ a.place-arrow-back:hover {
 .p-bibliography a {
     text-decoration: none;
     color: #212529;
-    overflow-wrap: break-word;
+    word-wrap: break-word;
     word-break: break-all;
 }
 
