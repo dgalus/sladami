@@ -1057,6 +1057,7 @@ a.place-arrow-back:hover {
     text-decoration: none;
     color: #212529;
     overflow-wrap: break-word;
+    word-break: break-all;
 }
 
 .vertical-timeline {
